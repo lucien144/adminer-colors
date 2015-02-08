@@ -35,3 +35,7 @@ function adminer_object() {
 include "./adminer.php";
 
 ```
+
+# What you get
+
+![preview](https://raw.githubusercontent.com/fprochazka/adminer-colors/master/docs/preview.png)
