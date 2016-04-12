@@ -19,6 +19,9 @@ class AdminerColors
 		} elseif (isset($this->colors[$_GET['pgsql']])) {
 			$color = $this->colors[$_GET['pgsql']];
 
+		} elseif (isset($this->colors[$_SERVER['SERVER_NAME']])) {
+			$color = $this->colors[$_SERVER['SERVER_NAME']];
+
 		} else {
 			return;
 		}
