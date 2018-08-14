@@ -10,25 +10,27 @@ Simply add new instance of the plugin in your `$plugins` as the [official docume
 
 ```php
 function adminer_object() {
-    // required to run any plugin
-    include_once "./plugins/plugin.php";
+	// required to run any plugin
+	include_once "./plugins/plugin.php";
 
-    // autoloader
-    foreach (glob("plugins/*.php") as $filename) {
-        include_once "./$filename";
-    }
+	// autoloader
+	foreach (glob("plugins/*.php") as $filename) {
+		include_once "./$filename";
+	}
 
-    $plugins = array(
-        // specify enabled plugins here
-        new AdminerColors(array(
+	$plugins = array(
+		// specify enabled plugins here
+		new AdminerColors([
 			# specify as many servers as you want
 			'127.0.0.1' => '#009245',
 			'dev.server.cz' => '#F7931E',
 			'www.server.cz' => '#ED1C24',
-		)),
-    );
+			# you can use regular expression too!
+			'/^192\.168\.([0-9\.]*)$/' => '#ED1C24',
+		]),
+	);
 
-    return new AdminerPlugin($plugins);
+	return new AdminerPlugin($plugins);
 }
 
 // include original Adminer or Adminer Editor
