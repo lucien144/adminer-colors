@@ -14,13 +14,16 @@ class AdminerColors
 
 	public function head()
 	{
-		$color = $this->colors[$_GET['server']] ?? self::DEFAULT_COLOR;
-		$color = $this->colors[$_GET['pgsql']] ?? self::DEFAULT_COLOR;
-		$color = $this->colors[$_SERVER['SERVER_NAME']] ?? self::DEFAULT_COLOR;
-		$color = $this->colors[$_SERVER['SERVER_ADDR']] ?? self::DEFAULT_COLOR;
+		$servers = [$_GET['server'], $_GET['pgsql'], $_SERVER['SERVER_NAME'], $_SERVER['SERVER_ADDR']];
 
+		// Match servers
+		foreach ($servers as $server) {
+			$color = $this->colors[$server] ?? self::DEFAULT_COLOR;
+		}
+
+		// Match regexpx
 		foreach ($this->colors as $pattern => $value) {
-			$grep = preg_grep($pattern, [$_GET['server'], $_GET['pgsql'], $_SERVER['SERVER_NAME'], $_SERVER['SERVER_ADDR']]);
+			$grep = preg_grep($pattern, $servers);
 			if (!empty($grep)) {
 				$color = $value;
 			}
