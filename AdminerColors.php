@@ -3,6 +3,7 @@
 
 class AdminerColors
 {
+	const DEFAULT_COLOR = '#f00';
 
 	private $colors;
 
@@ -13,18 +14,9 @@ class AdminerColors
 
 	public function head()
 	{
-		if (isset($this->colors[$_GET['server']])) {
-			$color = $this->colors[$_GET['server']];
-
-		} elseif (isset($this->colors[$_GET['pgsql']])) {
-			$color = $this->colors[$_GET['pgsql']];
-
-		} elseif (isset($this->colors[$_SERVER['SERVER_NAME']])) {
-			$color = $this->colors[$_SERVER['SERVER_NAME']];
-
-		} else {
-			return;
-		}
+		$color = $this->colors[$_GET['server']] ?? self::DEFAULT_COLOR;
+		$color = $this->colors[$_GET['pgsql']] ?? self::DEFAULT_COLOR;
+		$color = $this->colors[$_SERVER['SERVER_NAME']] ?? self::DEFAULT_COLOR;
 
 		echo '<style>
 			#menu { border-left: 1em solid ' . $color . '; min-height: 100%; }
