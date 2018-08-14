@@ -17,6 +17,7 @@ class AdminerColors
 		$color = $this->colors[$_GET['server']] ?? self::DEFAULT_COLOR;
 		$color = $this->colors[$_GET['pgsql']] ?? self::DEFAULT_COLOR;
 		$color = $this->colors[$_SERVER['SERVER_NAME']] ?? self::DEFAULT_COLOR;
+		$color = $this->colors[$_SERVER['SERVER_ADDR']] ?? self::DEFAULT_COLOR;
 
 		echo '<style>
 			#menu { border-left: 1em solid ' . $color . '; min-height: 100%; }
