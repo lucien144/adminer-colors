@@ -1,5 +1,7 @@
 # Adminer Colors
 
+Works nicely with adminer self-update script 👉 https://gist.github.com/lucien144/dc34bb91cde424681ac1d701d7f6e8e6
+
 Motivation: https://filip-prochazka.com/blog/obarvete-si-adminer
 
 Thanks to [Ladislav Marek](https://github.com/lm) for making this look nicer than I did :)
