@@ -23,9 +23,11 @@ class AdminerColors
 
 		// Match regexpx
 		foreach ($this->colors as $pattern => $value) {
-			$grep = preg_grep($pattern, $servers);
-			if (!empty($grep)) {
-				$color = $value;
+			if (@preg_match($pattern, null) !== false) {
+				$grep = preg_grep($pattern, $servers);
+				if (!empty($grep)) {
+					$color = $value;
+				}
 			}
 		}
 
